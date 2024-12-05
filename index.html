@@ -232,19 +232,24 @@
   </pre>
   </p>
 
-  <p id="date&time"></p>
-  <script>
-  // Javascript to display the date and time on my webpage
-  const d = new Date();
-  document.getElementById("date&time").innerHTML = d;
-  </script>
-
-    <p><b>Word Count: <span id="wordCount">0</span></b></p>
-    <script>
+<p><b>Word Count (excluding Abstract, Table of Contents, and References): <span id="wordCount">0</span></b></p>
+<script>
   function calculateWordCount() {
-      const textContent = document.body.innerText || document.body.textContent;
-      const words = textContent.trim().split(/\s+/);
+      // Select content sections to include in the count
+      const contentSections = document.querySelectorAll(
+          "h3, pre, p.ex1:not(#References, #Abstract)"
+      );
+
+      let totalText = "";
+      contentSections.forEach(section => {
+          totalText += section.innerText || section.textContent;
+      });
+
+      // Split the content into words
+      const words = totalText.trim().split(/\s+/);
       const wordCount = words.filter(word => word.length > 0).length;
+
+      // Display the word count
       document.getElementById("wordCount").textContent = wordCount;
   }
 
