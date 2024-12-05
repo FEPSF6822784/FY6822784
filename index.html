@@ -238,6 +238,19 @@
   const d = new Date();
   document.getElementById("date&time").innerHTML = d;
   </script>
-    
+
+    <p><b>Word Count: <span id="wordCount">0</span></b></p>
+    <script>
+  function calculateWordCount() {
+      const textContent = document.body.innerText || document.body.textContent;
+      const words = textContent.trim().split(/\s+/);
+      const wordCount = words.filter(word => word.length > 0).length;
+      document.getElementById("wordCount").textContent = wordCount;
+  }
+
+  // Call the function when the page loads
+  window.onload = calculateWordCount;
+</script>
+
   </head>
 </html>
