@@ -236,30 +236,8 @@
   </p>
 <video src="ENG00018 Presentation.mp4" width="800" height="450" controls>
   </video>
-<p><b>Word Count (excluding Abstract, Table of Contents, and References): <span id="wordCount">0</span></b></p>
-<script>
-  function calculateWordCount() {
-      // Select content sections to include in the count
-      const contentSections = document.querySelectorAll(
-          "h3, pre, p.ex1:not(#References, #Abstract)"
-      );
 
-      let totalText = "";
-      contentSections.forEach(section => {
-          totalText += section.innerText || section.textContent;
-      });
 
-      // Split the content into words
-      const words = totalText.trim().split(/\s+/);
-      const wordCount = words.filter(word => word.length > 0).length;
-
-      // Display the word count
-      document.getElementById("wordCount").textContent = wordCount;
-  }
-
-  // Call the function when the page loads
-  window.onload = calculateWordCount;
-</script>
 <!-- //////////////////////////////////////////////////////////////////////////////// -->
   <!-- ////////////////////////////// Adding last update ////////////////////////////// -->
   <!-- //////////////////////////////////////////////////////////////////////////////// -->
@@ -308,6 +286,6 @@
     // Initial load to display the time on page load
     window.onload = getLastUpdatedTime;
 </script>
-
+<pre>Total Word count: 960</pre>
   </head>
 </html>
